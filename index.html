@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Indicator </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Check your Password</h2>
+        <div class="input-box">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <button type="submit"><img src="arrow.png" alt="arrow pic"></button>
+            <p id="message">Password is <span id="strenght"></span></p>
+        </div>
+    </div>
+    <script>
+        let pass = document.getElementById("password");
+        let msg = document.getElementById("message");
+        let str = document.getElementById("strenght");
+
+        pass.addEventListener('input', () => {
+            if(pass.value.length > 0){
+                msg.style.display = "block";
+            }
+            else{
+                msg.style.display = "none";
+            }
+            if(pass.value.length < 4){
+                str.innerHTML = "weak";
+                pass.style.borderColor = "#FF3E21";
+                msg.style.color = "#FF3E21";
+            }
+            else if(pass.value.length >= 4 && pass.value.length < 8){
+                str.innerHTML = "medium";
+                pass.style.borderColor = "#FFE52C";
+                msg.style.color = "#FFE52C";
+            }
+            else if(pass.value.length >= 8){
+                str.innerHTML = "strong";
+                pass.style.borderColor = "#0AC445";
+                msg.style.color = "#0AC445";
+            }
+        });
+    </script>
+</body>
+</html>
